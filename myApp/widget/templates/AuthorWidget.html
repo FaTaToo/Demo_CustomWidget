@@ -1,5 +1,10 @@
-<div>
+<!-- <div>
     <h3>Brian Arnold</h3>
     <img src="/includes/authors/brian_arnold/avatar.jpg">
     <p>Brian Arnold is a software engineer at SitePen, Inc., ...</p>
+</div> -->
+<div>
+    <h3 data-dojo-attach-point="nameNode">${name}</h3>
+    <img class="${baseClass}Avatar" src="" data-dojo-attach-point="avatarNode">
+    <p data-dojo-attach-point="bioNode">${!bio}</p>
 </div>
