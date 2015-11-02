@@ -8,21 +8,21 @@ define([
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/AuthorWidget.html"
-], function(declare, baseFx, lang, domStyle, mouse, on, _WidgetBase, _TemplatedMixin, template){
+], function(declare, baseFx, lang, domStyle, mouse, on, _WidgetBase, _TemplatedMixin, template) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // Some default values for our author
         // These typically map to whatever you're passing to the constructor
         name: "No Name",
         // Using require.toUrl, we can get a path to our AuthorWidget's space
         // and we want to have a default avatar, just in case
-        avatar: require.toUrl("./images/defaultAvatar.png"),
+        avatar: require.toUrl("myApp/images/defaultAvatar.png"),
         bio: "",
 
         // Our template - important!
         templateString: template,
 
         // A class to be applied to the root node in our template
-        baseClass: "authorWidget",x
+        baseClass: "authorWidget",
 
         // A reference to our background animation
         mouseAnim: null,
@@ -50,7 +50,7 @@ define([
 		        on(domNode, mouse.enter, lang.hitch(this, "_changeBackground", this.mouseBackgroundColor)),
 		        on(domNode, mouse.leave, lang.hitch(this, "_changeBackground", this.baseBackgroundColor))
 		    );
-		}
+		},
 	    
 	    _changeBackground: function(newColor) {
 		    // If we have an animation, stop it
@@ -69,5 +69,19 @@ define([
 		            this.mouseAnim = null;
 		        })
 		    }).play();
+		}, 
+
+		_setAvatarAttr: function(imagePath) {
+			// We only want to set it if it's a non-empty string
+		    if (imagePath != "") {
+		        // Save it on our widget instance - note that
+		        // we're using _set, to support anyone using
+		        // our widget's Watch functionality, to watch values change
+		        this._set("avatar", imagePath);
+
+		        // Using our avatarNode attach point, set its src value
+		        this.avatarNode.src = imagePath;
+		    }
 		}
+	});
 });
