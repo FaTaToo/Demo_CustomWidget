@@ -54,12 +54,18 @@
                     "avatar": "myApp/widget/images/defaultAvatar.png",
                     "bio": "Brian Arnold is a software engineer at SitePen, Inc., ..."
                 },
+
+                {
+                    "name": "fatatoo",
+                    "avatar": "myApp/widget/images/defaultAvatar.png",
+                    "bio": "he is student..."
+                },
             ]
             var authorContainer = dom.byId("authorContainer");
             arrayUtil.forEach(authors, function(author){
                 // Create our widget and place it
-                var widget = new AuthorWidget(author, authorContainer);
-                // var widget = new AuthorWidget(author).placeAt(authorContainer);
+                // var widget = new AuthorWidget(author, authorContainer);
+                var widget = new AuthorWidget(author).placeAt(authorContainer);
             });
         });
     </script>
